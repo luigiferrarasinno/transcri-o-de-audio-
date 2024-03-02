@@ -11,17 +11,17 @@
         <label for="duration">Tempo de Gravação (segundos):</label>
         <input type="number" id="duration" name="duration" min="1" placeholder="Informe a duração em segundos">
         <input type="submit" id="gravar"   value="Gravar Áudio">
-        <script>
-            // Selecione o botão
-            var botao = document.getElementById("gravar");
-            
-            // Adicione um evento de clique ao botão
-            botao.addEventListener("click", function() {
-                // Exiba um aviso quando o botão for clicado
-                alert("gravção iniciada");
-            });
-            </script>  
     </form>
+    <script>
+        var botao = document.getElementById("gravar");
+            botao.addEventListener("click", function(event) {
+                var duracao = document.getElementById("duration").value;
+                var tempoVisivel = duracao * 1000; 
+                setTimeout(function() {
+                    alert("Gravação finalizada");
+                }, tempoVisivel);
+            });
+    </script>
     {% if texto_transcrito %}
     <h2>Texto Transcrito:</h2>
     <p>{{ texto_transcrito }}</p>
