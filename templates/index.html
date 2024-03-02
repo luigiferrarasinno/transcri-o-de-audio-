@@ -4,24 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gravação de Áudio</title>
+    <style>
+        #popup {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #fff;
+          padding: 20px;
+          border: 1px solid #ccc;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+      </style>
 </head>
 <body>
+    <div id="popup">
+        <p>gravando</p>
+    </div>
     <h1>Gravação de Áudio</h1>
-    <form action="/" method="post">
+    <form id="audioForm" action="/" method="post">
         <label for="duration">Tempo de Gravação (segundos):</label>
         <input type="number" id="duration" name="duration" min="1" placeholder="Informe a duração em segundos">
-        <input type="submit" id="gravar"   value="Gravar Áudio">
+        <input type="submit" id="gravar" value="Gravar Áudio">
     </form>
     <script>
-    var botao = document.getElementById("gravar");
-    botao.addEventListener("click", function(event) {
-        var duracao = document.getElementById("duration").value;
-        var tempoVisivel = duracao * 1000; 
-        setTimeout(function() {
-            alert("Gravação finalizada");
+        var botao = document.getElementById("gravar");
+        botao.addEventListener("click", function(event) {
+            // Exibir popup
+            document.getElementById('popup').style.display = 'block';
+            
+            var duracao = document.getElementById("duration").value;
+            var tempoVisivel = duracao * 1000;
+
+            // Fechar o popup após 5 segundos
+            setTimeout(function() {
+                document.getElementById('popup').style.display = 'none';
+            }, tempoVisivel);
+
+            // Alerta de gravação finalizada após o tempo de gravação especificado
+            setTimeout(function() {
+                alert("Gravação finalizada");
             }, tempoVisivel);
         });
-        </script>
+    </script>
     {% if texto_transcrito %}
     <h2>Texto Transcrito:</h2>
     <p>{{ texto_transcrito }}</p>
