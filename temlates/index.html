@@ -12,8 +12,8 @@
         <input type="number" id="duration" name="duration" min="1" placeholder="Informe a duração em segundos">
         <input type="submit" id="gravar"   value="Gravar Áudio">
     </form>
-    <script>
-        var botao = document.getElementById("gravar");
+            <script>
+         var botao = document.getElementById("gravar");
             botao.addEventListener("click", function(event) {
                 var duracao = document.getElementById("duration").value;
                 var tempoVisivel = duracao * 1000; 
@@ -21,7 +21,7 @@
                     alert("Gravação finalizada");
                 }, tempoVisivel);
             });
-    </script>
+            </script>
     {% if texto_transcrito %}
     <h2>Texto Transcrito:</h2>
     <p>{{ texto_transcrito }}</p>
