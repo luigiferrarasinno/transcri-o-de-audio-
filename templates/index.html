@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
     <title>Gravação de Áudio</title>
-    <style>
-        #popup {
-          display: none;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: #fff;
-          padding: 20px;
-          border: 1px solid #ccc;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-      </style>
+   
 </head>
 <body>
     <div id="popup">
         <p>gravando</p>
     </div>
-    <h1>Gravação de Áudio</h1>
+    <h1 id="titulo">Gravação de Áudio</h1><br>
+    <div id="forms">
     <form id="audioForm" action="/" method="post">
         <label for="duration">Tempo de Gravação (segundos):</label>
         <input type="number" id="duration" name="duration" min="1" placeholder="Informe a duração em segundos">
         <input type="submit" id="gravar" value="Gravar Áudio">
     </form>
+    </div>
     <script>
         var botao = document.getElementById("gravar");
         botao.addEventListener("click", function(event) {
@@ -49,9 +39,15 @@
             }, tempoVisivel);
         });
     </script>
-    {% if texto_transcrito %}
-    <h2>Texto Transcrito:</h2>
-    <p>{{ texto_transcrito }}</p>
-    {% endif %}
+    <br><br>
+    <div id="texto">
+        <h2>Texto Transcrito:</h2>
+    </div>
+        <br>
+    <div id="texto2">
+        {% if texto_transcrito %}
+        <p>{{ texto_transcrito }}</p>
+        {% endif %}
+    </div>
 </body>
 </html>
