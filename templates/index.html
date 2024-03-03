@@ -24,6 +24,16 @@
             <input type="submit" id="gravar" value="Gravar Áudio">
         </form>
     </div>
+    <br><br>
+    <div id="texto">
+        <h2>Texto Transcrito:</h2>
+    </div>
+    <br>
+    <div id="texto2" style="{% if texto_transcrito %}display: flex;{% endif %}">
+        {% if texto_transcrito %}
+            <p>{{ texto_transcrito }}</p>
+        {% endif %}
+    </div>
     <script>
         var botao = document.getElementById("gravar");
         botao.addEventListener("click", function(event) {
@@ -60,15 +70,5 @@
             }
         });
     </script>
-    <br><br>
-    <div id="texto">
-        <h2>Texto Transcrito:</h2>
-    </div>
-    <br>
-    <div id="texto2" style="{% if texto_transcrito %}display: flex;{% endif %}">
-        {% if texto_transcrito %}
-            <p>{{ texto_transcrito }}</p>
-        {% endif %}
-    </div>
 </body>
 </html>

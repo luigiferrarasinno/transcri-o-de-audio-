@@ -9,7 +9,7 @@ app.secret_key = "alura"
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        duration = int(request.form['duration'])  # Obter a duração da gravação
+        duration = float(request.form['duration'])  # Obter a duração da gravação
         tempo = request.form['tempo']  # Obter a unidade de tempo (segundos, minutos ou horas)
 
         # Converter a duração para segundos, se necessário
