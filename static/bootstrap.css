@@ -32,7 +32,7 @@ body {
 .microphone-icon {
   width: 50px;
   height: 50px;
-  background-image: url('./ux.png');
+  background-image: url('./microphone.png');
   background-size: cover;
   animation: moveMicrophone 0.5s infinite alternate; /* Animação de movimento */
 }

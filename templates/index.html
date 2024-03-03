@@ -15,7 +15,7 @@
     <div id="forms">
         <form id="audioForm" action="/" method="post">
             <label for="duration">Tempo de Gravação:</label>
-            <input type="number" id="duration" name="duration" min="1" placeholder="Informe a duração">
+            <input type="text" id="duration" name="duration" placeholder="Informe a duração">
             <select name="tempo">
                 <option value="segundos">Segundos</option>
                 <option value="minutos">Minutos</option>
@@ -27,28 +27,37 @@
     <script>
         var botao = document.getElementById("gravar");
         botao.addEventListener("click", function(event) {
-            // Exibir popup
-            document.getElementById('popup').style.display = 'flex';
+        
             
             var duracao = document.getElementById("duration").value;
             var tempo = document.querySelector('select[name="tempo"]').value;
-            var tempoVisivel = duracao * 1000;
+            var tempoVisivel;
 
-            if (tempo === 'minutos') {
-                tempoVisivel *= 60;
-            } else if (tempo === 'horas') {
-                tempoVisivel *= 3600;
+            // Verifica se o input é um número válido
+            if (!isNaN(duracao) && duracao !== "") {
+                tempoVisivel = duracao * 1000;
+
+                if (tempo === 'minutos') {
+                    tempoVisivel *= 60;
+                } else if (tempo === 'horas') {
+                    tempoVisivel *= 3600;
+                }
+                //alerta gravando
+                document.getElementById('popup').style.display = 'flex';
+                document.getElementById('texto2').style.display = 'none';
+                // Fechar o popup após o tempo especificado
+                setTimeout(function() {
+                    document.getElementById('popup').style.display = 'none';
+                }, tempoVisivel);
+
+                // Alerta de gravação finalizada após o tempo de gravação especificado
+                setTimeout(function() {
+                    alert("Gravação finalizada");
+                }, tempoVisivel);
+            } else {
+                event.preventDefault(); // Evita que o formulário seja enviado
+                alert("Por favor, insira um valor numérico válido para a duração.");
             }
-
-            // Fechar o popup após 5 segundos
-            setTimeout(function() {
-                document.getElementById('popup').style.display = 'none';
-            }, tempoVisivel);
-
-            // Alerta de gravação finalizada após o tempo de gravação especificado
-            setTimeout(function() {
-                alert("Gravação finalizada");
-            }, tempoVisivel);
         });
     </script>
     <br><br>
