@@ -9,6 +9,7 @@
 <body>
     <div id="popup">
         <p>gravando</p>
+        <div class="spinner"></div>
     </div>
     <h1 id="titulo">Gravação de Áudio</h1><br>
     <div id="forms">
@@ -27,7 +28,7 @@
         var botao = document.getElementById("gravar");
         botao.addEventListener("click", function(event) {
             // Exibir popup
-            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup').style.display = 'flex';
             
             var duracao = document.getElementById("duration").value;
             var tempo = document.querySelector('select[name="tempo"]').value;
@@ -55,9 +56,9 @@
         <h2>Texto Transcrito:</h2>
     </div>
     <br>
-    <div id="texto2">
+    <div id="texto2" style="{% if texto_transcrito %}display: flex;{% endif %}">
         {% if texto_transcrito %}
-        <p>{{ texto_transcrito }}</p>
+            <p>{{ texto_transcrito }}</p>
         {% endif %}
     </div>
 </body>
