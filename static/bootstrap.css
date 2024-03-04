@@ -15,9 +15,12 @@
   
 }
 body {
-  background-image: url('/static/fundo.avif');
-  background-size: cover; /* A imagem cobrirá todo o corpo da página */
+  background-image: url('/static/fundo.jpg');
+  background-size:auto; /* A imagem cobrirá todo o corpo da página */
+  background-position: center; /* centraliza a imagem no elemento pai */
+  background-repeat: no-repeat; /* impede que a imagem se repita */
   font-size: 35px;
+  
 }
 .spinner {
   border: 6px solid rgba(0, 0, 255, 0.3);
@@ -47,6 +50,7 @@ body {
 }
 
 #titulo{
+  padding-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
