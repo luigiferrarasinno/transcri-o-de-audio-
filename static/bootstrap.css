@@ -130,7 +130,7 @@ input[type="submit"]:hover {
   display:none;
   flex-direction: column;
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px; /* Defina a largura conforme necessário */
@@ -140,7 +140,7 @@ input[type="submit"]:hover {
     rgba(0,0,0,0.2) 90%, rgba(0,0,0,0) 100%);
   padding: 20px;
   border-radius: 20px;
-  width: 600px;
+  width: 700px;
   height:300px;
   color:white;
 }
