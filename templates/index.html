@@ -25,12 +25,10 @@
         </form>
     </div>
     <br><br>
-    <div id="texto">
-        <h2>Texto Transcrito:</h2>
-    </div>
     <br>
     <div id="texto2" style="{% if texto_transcrito %}display: flex;{% endif %}">
         {% if texto_transcrito %}
+        <h3 id= "titulo5">texto gerado:</h3>
             <p>{{ texto_transcrito }}</p>
         {% endif %}
     </div>
