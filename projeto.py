@@ -4,7 +4,7 @@ import soundfile as sf
 import speech_recognition as sr
 
 app = Flask(__name__)
-app.secret_key = "alura"
+app.secret_key = "projeto_luigi"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
