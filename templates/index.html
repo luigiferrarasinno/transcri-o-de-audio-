@@ -7,11 +7,6 @@
     <title>Gravação de Áudio</title>
 </head>
 <body>
-    <br>
-    <div id="popup">
-        <p>gravando</p>
-        <div class="microphone-icon"></div>
-    </div>
     <h1 id="titulo">Gravação de Áudio</h1><br>
     <div id="forms">
         <form id="audioForm" action="/" method="post">
@@ -24,6 +19,10 @@
             </select>
             <input type="submit" id="gravar" value="Gravar Áudio">
         </form>
+    </div>
+    <div id="popup">
+        <p>gravando</p>
+        <div class="microphone-icon"></div>
     </div>
     <div id="texto2" style="{% if texto_transcrito %}display: flex;{% endif %}">
         {% if texto_transcrito %}

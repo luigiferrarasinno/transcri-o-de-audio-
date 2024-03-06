@@ -3,7 +3,7 @@
 #popup {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -130,7 +130,7 @@ input[type="submit"]:hover {
   display:none;
   flex-direction: column;
   position: absolute;
-  top: 65%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px; /* Defina a largura conforme necessário */
