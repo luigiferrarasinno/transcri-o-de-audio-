@@ -1,3 +1,10 @@
+#pip install sounddevice
+#pip install scipy
+#pip install soundfile
+#pip install SpeechRecognition
+#pip install flask
+
+
 from flask import Flask, render_template, request
 import sounddevice as sd
 import soundfile as sf
