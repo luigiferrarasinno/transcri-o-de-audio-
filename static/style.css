@@ -310,6 +310,12 @@ h3, .h3 {
   h3, .h3 {
     font-size: 1.75rem;
   }
+  #texto2 {
+    font-size: 20px;
+    width: 80%;
+    height: 50%;
+    padding: 10px;
+  }
 }
 
 p {
