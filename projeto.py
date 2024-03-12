@@ -1,10 +1,3 @@
-#pip install sounddevice
-#pip install scipy
-#pip install soundfile
-#pip install SpeechRecognition
-#pip install flask
-
-
 from flask import Flask, render_template, request
 import sounddevice as sd
 import soundfile as sf
@@ -27,27 +20,34 @@ def index():
 
         fs = 44100
 
-        # Gravação de áudio
-        print("Gravando áudio...")
-        gravacao = sd.rec(int(duration * fs), samplerate=fs, channels=1)
-        sd.wait()
+        # Inicializar texto_transcrito
+        texto_transcrito = None
 
-        # Salvar o áudio em um arquivo WAV
-        sf.write('audio_gravado.wav', gravacao, fs)
+        try:
+            # Gravação de áudio
+            print("Gravando áudio...")
+            gravacao = sd.rec(int(duration * fs), samplerate=fs, channels=1)
+            sd.wait()
 
-        # Carregar o arquivo de áudio gravado
-        audio_gravado, _ = sf.read('audio_gravado.wav')
+            # Salvar o áudio em um arquivo WAV
+            sf.write('audio_gravado.wav', gravacao, fs)
 
-        # Transcrição do áudio
-        recognizer = sr.Recognizer()
-        with sr.AudioFile('audio_gravado.wav') as source:
-            audio_data = recognizer.record(source)
-            try:
+            # Carregar o arquivo de áudio gravado
+            audio_gravado, _ = sf.read('audio_gravado.wav')
+
+            # Transcrição do áudio
+            recognizer = sr.Recognizer()
+            with sr.AudioFile('audio_gravado.wav') as source:
+                audio_data = recognizer.record(source)
                 texto_transcrito = recognizer.recognize_google(audio_data, language='pt-BR')
-            except sr.UnknownValueError:
-                texto_transcrito = "Não foi possível transcrever o áudio."
-            except sr.RequestError as e:
-                texto_transcrito = f"Erro durante o reconhecimento de fala: {e}"
+        except sd.PortAudioError:
+            texto_transcrito = "Erro: Dispositivo de áudio não está disponível."
+        except sr.UnknownValueError:
+            texto_transcrito = "Não foi possível transcrever o áudio."
+        except (IOError, EOFError):
+            texto_transcrito = "Erro ao gravar ou ler o arquivo de áudio."
+        except sr.RequestError as e:
+            texto_transcrito = f"Erro ao acessar a API do Google: {e}"
 
         return render_template('index.html', texto_transcrito=texto_transcrito)
 
